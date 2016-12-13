@@ -17,10 +17,10 @@ print "model loaded"
 
 # Initialize Form Class
 class theForm(Form):
-    param1 = DecimalField(label='Exercise (no:1 yes:2):', places=2, validators=[Required()])
-    param2 = DecimalField(label='Food Amount (not enough:1, sometimes enough:2, enough:3):', places=2, validators=[Required()])
-    param3 = DecimalField(label='Occupation Category (1-6):', places=2, validators=[Required()])
-    param4 = DecimalField(label='Stores (1-5):', places=2, validators=[Required()])
+    param1 = DecimalField(label='Exercise (no:1 yes:2):', places=0, validators=[Required()])
+    param2 = DecimalField(label='Food Amount (not enough:1, sometimes enough:2, enough:3):', places=0, validators=[Required()])
+    param3 = DecimalField(label='Occupation Category (1-6):', places=0, validators=[Required()])
+    param4 = DecimalField(label='Stores (1-5):', places=0, validators=[Required()])
     submit = SubmitField('Submit')
 
 
@@ -39,7 +39,7 @@ def home():
                            (session['stores'])]
 
         # Return only the Predicted iris species
-        income = ['above 185%', 'below 185%']
+        income = ['1', '0']
         session['prediction'] = income[machine_learning_model.predict(income_instance)[0]]
 
         # Implement Post/Redirect/Get Pattern

@@ -4,12 +4,12 @@
 	
 	<div class="content">
 			{% if prediction is defined %}
-                Sepal Length: {{ sepal_length }}<br>
-                Sepal Width: {{ sepal_width }}<br>
-                Petal Length: {{ petal_length }}<br>
-                Petal Width: {{ petal_width }}<br>
+                Exercise (no:1 yes:2): {{ exercise }}<br>
+                Food Amount (not enough:1, sometimes enough:2, enough:3): {{ food_amount }}<br>
+                Occupation Category (1-6): {{ cat_occ }}<br>
+                Stores (1-5): {{ stores }}<br>
                 <br>
-                Is a {{ prediction }}.
+                Income Level {{ prediction }}.
 			{% else %}
 				Please fill out the form below!
 			{% endif %}
