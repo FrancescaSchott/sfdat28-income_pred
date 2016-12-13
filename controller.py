@@ -17,10 +17,10 @@ print "model loaded"
 
 # Initialize Form Class
 class theForm(Form):
-    param1 = DecimalField(label='Sepal Length (cm):', places=2, validators=[Required()])
-    param2 = DecimalField(label='Sepal Width (cm):', places=2, validators=[Required()])
-    param3 = DecimalField(label='Petal Length (cm):', places=2, validators=[Required()])
-    param4 = DecimalField(label='Petal Width (cm):', places=2, validators=[Required()])
+    param1 = DecimalField(label='Exercise (no:1 yes:2):', places=2, validators=[Required()])
+    param2 = DecimalField(label='Food Amount (not enough:1, sometimes enough:2, enough:3):', places=2, validators=[Required()])
+    param3 = DecimalField(label='Occupation Category (1-6):', places=2, validators=[Required()])
+    param4 = DecimalField(label='Stores (1-5):', places=2, validators=[Required()])
     submit = SubmitField('Submit')
 
 
@@ -30,17 +30,17 @@ def home():
     form = theForm(csrf_enabled=False)
     if form.validate_on_submit():  # activates this if when i hit submit!
         # Retrieve values from form
-        session['sepal_length'] = form.param1.data
-        session['sepal_width'] = form.param2.data
-        session['petal_length'] = form.param3.data
-        session['petal_width'] = form.param4.data
+        session['exercise'] = form.param1.data
+        session['food_amount'] = form.param2.data
+        session['cat_occ'] = form.param3.data
+        session['stores'] = form.param4.data
         # Create array from values
-        flower_instance = [(session['sepal_length']), (session['sepal_width']), (session['petal_length']),
-                           (session['petal_width'])]
+        income_instance = [(session['exercise']), (session['food_amount']), (session['cat_occ']),
+                           (session['stores'])]
 
         # Return only the Predicted iris species
-        flowers = ['setosa', 'versicolor', 'virginica']
-        session['prediction'] = flowers[machine_learning_model.predict(flower_instance)[0]]
+        income = ['above 185%', 'below 185%']
+        session['prediction'] = income[machine_learning_model.predict(income_instance)[0]]
 
         # Implement Post/Redirect/Get Pattern
         return redirect(url_for('home'))
