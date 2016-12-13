@@ -39,7 +39,7 @@ def home():
                            (session['stores'])]
 
         # Return only the Predicted iris species
-        income = ['1', '0']
+        income = ['0', '1']
         session['prediction'] = income[machine_learning_model.predict(income_instance)[0]]
 
         # Implement Post/Redirect/Get Pattern
